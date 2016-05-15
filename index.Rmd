@@ -1,11 +1,14 @@
 ---
 title: "vembedr"
+author: "Ian Lyttle"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+This package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.
 
 ## Use
 
@@ -19,4 +22,22 @@ div(align = "center", embed_vimeo("45196609"))
 div(align = "center", embed_youtube("dQw4w9WgXcQ"))
 ```
 
+Due to the unique appeal of this particular video, it behooves me to include some functions to make their inclusion in your work that much easier. Here's some *syntactic* sugar for your synthetic sugar, functions to make it easier for you to get the feel for the different embedding options:
 
+```{r eval=FALSE}
+rickroll_vimeo()
+rickroll_youtube()
+```
+
+These functions just pass their arguments on to `embed_vimeo()` or `embed_youtube()`.
+
+## Installation
+
+At some point, I hope to submit this to CRAN. In the meantime, you can install this package using Github.
+
+```{r eval=FALSE}
+if (packageVersion("devtools") < 1.6) {
+  install.packages("devtools")
+}
+devtools::install_github("ijlyttle/vembedr")
+```

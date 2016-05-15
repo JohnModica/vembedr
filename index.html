@@ -9,6 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Ian Lyttle" />
 
 
 <title>vembedr</title>
@@ -115,10 +116,12 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">vembedr</h1>
+<h4 class="author"><em>Ian Lyttle</em></h4>
 
 </div>
 
 
+<p>This package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.</p>
 <div id="use" class="section level2">
 <h2>Use</h2>
 <pre class="r"><code>library(&quot;htmltools&quot;)
@@ -131,6 +134,18 @@ library(&quot;vembedr&quot;)</code></pre>
 <div align="center">
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
 </div>
+<p>Due to the unique appeal of this particular video, it behooves me to include some functions to make their inclusion in your work that much easier. Here’s some <em>syntactic</em> sugar for your synthetic sugar, functions to make it easier for you to get the feel for the different embedding options:</p>
+<pre class="r"><code>rickroll_vimeo()
+rickroll_youtube()</code></pre>
+<p>These functions just pass their arguments on to <code>embed_vimeo()</code> or <code>embed_youtube()</code>.</p>
+</div>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>At some point, I hope to submit this to CRAN. In the meantime, you can install this package using Github.</p>
+<pre class="r"><code>if (packageVersion(&quot;devtools&quot;) &lt; 1.6) {
+  install.packages(&quot;devtools&quot;)
+}
+devtools::install_github(&quot;ijlyttle/vembedr&quot;)</code></pre>
 </div>
 
 
