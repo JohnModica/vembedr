@@ -1,0 +1,22 @@
+---
+title: "vembedr"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Use
+
+```{r}
+library("htmltools")
+library("vembedr")
+```
+
+```{r}
+div(align = "center", embed_vimeo("45196609"))
+div(align = "center", embed_youtube("dQw4w9WgXcQ"))
+```
+
+
