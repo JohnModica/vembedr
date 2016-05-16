@@ -121,7 +121,8 @@ $(document).ready(function () {
 </div>
 
 
-<p>This package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.</p>
+<p>This R package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.</p>
+<p>This is done by providing functions to generate the HTML embedding-code for each of these services.</p>
 <div id="use" class="section level2">
 <h2>Use</h2>
 <pre class="r"><code>library(&quot;htmltools&quot;)
@@ -134,10 +135,29 @@ library(&quot;vembedr&quot;)</code></pre>
 <div align="center">
 <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
 </div>
-<p>Due to the unique appeal of this particular video, it behooves me to include some functions to make their inclusion in your work that much easier. Here’s some <em>syntactic</em> sugar for your synthetic sugar, functions to make it easier for you to get the feel for the different embedding options:</p>
+<p>The unique appeal of this particular video demands some functions to make their inclusion in your work that much easier. So here’s some <em>syntactic</em> sugar for your synthetic sugar:</p>
 <pre class="r"><code>rickroll_vimeo()
 rickroll_youtube()</code></pre>
-<p>These functions just pass their arguments on to <code>embed_vimeo()</code> or <code>embed_youtube()</code>.</p>
+<p>These functions may make it easier for you to get the feel for the different embedding options, as they just pass their arguments on to <code>embed_vimeo()</code> or <code>embed_youtube()</code>.</p>
+</div>
+<div id="what-it-does" class="section level2">
+<h2>What it does</h2>
+<p>These functions simply use the html constructors from the htmltools package.</p>
+<pre class="r"><code>str(rickroll_youtube())</code></pre>
+<pre><code>## List of 3
+##  $ name    : chr &quot;iframe&quot;
+##  $ attribs :List of 5
+##   ..$ src            : chr &quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot;
+##   ..$ width          : num 420
+##   ..$ height         : num 315
+##   ..$ frameborder    : num 0
+##   ..$ allowfullscreen: chr &quot;&quot;
+##  $ children: list()
+##  - attr(*, &quot;class&quot;)= chr &quot;shiny.tag&quot;</code></pre>
+<p>Although the class is <code>shiny.tag</code>, this does not imply that you need to use Shiny.</p>
+<pre class="r"><code>print(rickroll_youtube())</code></pre>
+<pre><code>## &lt;iframe src=&quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot; width=&quot;420&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</code></pre>
+<p>As you can see, this will output standard HTML code.</p>
 </div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>

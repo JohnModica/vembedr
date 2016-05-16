@@ -8,7 +8,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.
+This R package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.
+
+This is done by providing functions to generate the HTML embedding-code for each of these services. 
+
+[Github repository](https://github.com/ijlyttle/vembedr)
 
 ## Use
 
@@ -22,14 +26,30 @@ div(align = "center", embed_vimeo("45196609"))
 div(align = "center", embed_youtube("dQw4w9WgXcQ"))
 ```
 
-Due to the unique appeal of this particular video, it behooves me to include some functions to make their inclusion in your work that much easier. Here's some *syntactic* sugar for your synthetic sugar, functions to make it easier for you to get the feel for the different embedding options:
+The unique appeal of this particular video demands some functions to make their inclusion in your work that much easier. So here's some *syntactic* sugar for your synthetic sugar:
 
 ```{r eval=FALSE}
 rickroll_vimeo()
 rickroll_youtube()
 ```
 
-These functions just pass their arguments on to `embed_vimeo()` or `embed_youtube()`.
+These functions may make it easier for you to get the feel for the different embedding options, as they just pass their arguments on to `embed_vimeo()` or `embed_youtube()`.
+
+## What it does
+
+These functions simply use the html constructors from the htmltools package.
+
+```{r}
+str(rickroll_youtube())
+```
+
+Although the class is `shiny.tag`, this does not imply that you need to use Shiny. 
+
+```{r}
+print(rickroll_youtube())
+```
+
+As you can see, this will output standard HTML code.
 
 ## Installation
 
