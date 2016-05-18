@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This R package makes it a little easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.
+This R package makes it a little bit easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.
 
 This is done by providing functions to generate the HTML embedding-code for each of these services. 
 
