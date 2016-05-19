@@ -23,7 +23,7 @@ library("vembedr")
 
 ```{r}
 div(align = "center", embed_vimeo("45196609"))
-div(align = "center", embed_youtube("dQw4w9WgXcQ", query = list(start = 50)))
+div(align = "center", embed_youtube("dQw4w9WgXcQ", query = list(t = "1m30")))
 ```
 
 The unique appeal of this particular video demands some functions to make their inclusion in your work that much easier. So here's some *syntactic* sugar for your synthetic sugar:
