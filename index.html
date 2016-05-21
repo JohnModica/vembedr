@@ -160,6 +160,16 @@ rickroll_youtube()</code></pre>
 <pre><code>## &lt;iframe src=&quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot; width=&quot;420&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</code></pre>
 <p>As you can see, this will output standard HTML code.</p>
 </div>
+<div id="using-parameters" class="section level2">
+<h2>Using parameters</h2>
+<pre class="r"><code>div(
+  align = &quot;center&quot;,
+  embed_youtube(&quot;8SGif63VW6E&quot;, query = list(start = secs(&quot;4m12s&quot;)))
+)</code></pre>
+<div align="center">
+<iframe src="https://www.youtube.com/embed/8SGif63VW6E?start=252" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>At some point, I hope to submit this to CRAN. In the meantime, you can install this package using Github.</p>

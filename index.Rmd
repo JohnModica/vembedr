@@ -51,6 +51,15 @@ print(rickroll_youtube())
 
 As you can see, this will output standard HTML code.
 
+## Using parameters
+
+```{r}
+div(
+  align = "center",
+  embed_youtube("8SGif63VW6E", query = list(start = secs("4m12s")))
+)
+```
+
 ## Installation
 
 At some point, I hope to submit this to CRAN. In the meantime, you can install this package using Github.
