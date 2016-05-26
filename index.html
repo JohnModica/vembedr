@@ -121,55 +121,6 @@ $(document).ready(function () {
 </div>
 
 
-<p>This R package makes it a little bit easier for you to embed videos from YouTube and Vimeo into your Rmarkdown documents and your Shiny apps.</p>
-<p>This is done by providing functions to generate the HTML embedding-code for each of these services.</p>
-<p><a href="https://github.com/ijlyttle/vembedr">Github repository</a></p>
-<div id="use" class="section level2">
-<h2>Use</h2>
-<pre class="r"><code>library(&quot;htmltools&quot;)
-library(&quot;vembedr&quot;)</code></pre>
-<pre class="r"><code>div(align = &quot;center&quot;, embed_vimeo(&quot;45196609&quot;))</code></pre>
-<div align="center">
-<iframe src="https://player.vimeo.com/video/45196609" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-</div>
-<pre class="r"><code>div(align = &quot;center&quot;, embed_youtube(&quot;dQw4w9WgXcQ&quot;, query = list(start = 90)))</code></pre>
-<div align="center">
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?start=90" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
-</div>
-<p>The unique appeal of this particular video demands some functions to make their inclusion in your work that much easier. So here’s some <em>syntactic</em> sugar for your synthetic sugar:</p>
-<pre class="r"><code>rickroll_vimeo()
-rickroll_youtube()</code></pre>
-<p>These functions may make it easier for you to get the feel for the different embedding options, as they just pass their arguments on to <code>embed_vimeo()</code> or <code>embed_youtube()</code>.</p>
-</div>
-<div id="what-it-does" class="section level2">
-<h2>What it does</h2>
-<p>These functions simply use the html constructors from the htmltools package.</p>
-<pre class="r"><code>str(rickroll_youtube())</code></pre>
-<pre><code>## List of 3
-##  $ name    : chr &quot;iframe&quot;
-##  $ attribs :List of 5
-##   ..$ src            : chr &quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot;
-##   ..$ width          : num 420
-##   ..$ height         : num 315
-##   ..$ frameborder    : num 0
-##   ..$ allowfullscreen: chr &quot;&quot;
-##  $ children: list()
-##  - attr(*, &quot;class&quot;)= chr &quot;shiny.tag&quot;</code></pre>
-<p>Although the class is <code>shiny.tag</code>, this does not imply that you need to use Shiny.</p>
-<pre class="r"><code>print(rickroll_youtube())</code></pre>
-<pre><code>## &lt;iframe src=&quot;https://www.youtube.com/embed/dQw4w9WgXcQ&quot; width=&quot;420&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</code></pre>
-<p>As you can see, this will output standard HTML code.</p>
-</div>
-<div id="using-parameters" class="section level2">
-<h2>Using parameters</h2>
-<pre class="r"><code>div(
-  align = &quot;center&quot;,
-  embed_youtube(&quot;8SGif63VW6E&quot;, query = list(start = secs(&quot;4m12s&quot;)))
-)</code></pre>
-<div align="center">
-<iframe src="https://www.youtube.com/embed/8SGif63VW6E?start=252" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
 <p>At some point, I hope to submit this to CRAN. In the meantime, you can install this package using Github.</p>
@@ -177,6 +128,76 @@ rickroll_youtube()</code></pre>
   install.packages(&quot;devtools&quot;)
 }
 devtools::install_github(&quot;ijlyttle/vembedr&quot;)</code></pre>
+<pre class="r"><code>library(&quot;vembedr&quot;)
+library(&quot;htmltools&quot;)</code></pre>
+<p>The goal of the vembedr package is to make it a little bit easier for you to embed videos into your RMarkdown documents and your Shiny Apps. The package supports embedding from two services: YouTube and Vimeo.</p>
+<div id="note-for-rstudio-users" class="section level3">
+<h3>Note for RStudio users</h3>
+<p>The browser within the RStudio IDE does not support the use of iframes that point to external URLs. You are encouraged to open this vignette in a different browser, such as Chrome or Firefox. This page is also available at <a href="http://ijlyttle.github.io/vembedr/">vembedr GitHub pages</a>.</p>
+</div>
+</div>
+<div id="embedding-a-youtube-video" class="section level2">
+<h2>Embedding a YouTube video</h2>
+<p>Let’s say that you want to embed a YouTube video into an RMarkdown document, perhaps a vignette. Your first step will be to get the YouTube identifier for the particular video. One way to do this is to inspect the URL of the YouTube page featuring the video that you want to embed. For example:</p>
+<pre><code>&quot;https://www.youtube.com/watch?v=q2nNzNo_Xps&quot;</code></pre>
+<p>The identifier is simply the last part of the url: <code>&quot;q2nNzNo_Xps&quot;</code>.</p>
+<p>To embed this video, use the function <code>embed_youtube()</code>, using the <code>id</code> argument:</p>
+<pre class="r"><code>embed_youtube(id = &quot;q2nNzNo_Xps&quot;)</code></pre>
+<iframe src="https://www.youtube.com/embed/q2nNzNo_Xps" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+<p>Voila! If you wish to add some formatting within your document, the htmltools package makes that easier:</p>
+<pre class="r"><code>div(align = &quot;center&quot;, embed_youtube(id = &quot;Qpoqzt2EHaA&quot;))</code></pre>
+<div align="center">
+<iframe src="https://www.youtube.com/embed/Qpoqzt2EHaA" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+</div>
+<p>You will be the best judge of the best formatting for your situation. By providing only the iframe, you can wrap the iframe in whatever tags will work best for you.</p>
+</div>
+<div id="embedding-a-vimeo-video" class="section level2">
+<h2>Embedding a Vimeo video</h2>
+<p>Embedding a video from Vimeo is just as easy.</p>
+<pre><code>&quot;https://vimeo.com/48699174&quot;</code></pre>
+<p>The Vimeo id is just the path part of the URL: <code>&quot;48699174&quot;</code>:</p>
+<pre class="r"><code>div(align = &quot;center&quot;, embed_vimeo(id = &quot;48699174&quot;))</code></pre>
+<div align="center">
+<iframe src="https://player.vimeo.com/video/48699174" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+</div>
+</div>
+<div id="other-arguments-and-query-parameters" class="section level2">
+<h2>Other arguments and query parameters</h2>
+<p>The defaults for height and width of the iframe are taken from each service’s defaults. You can change this using the <code>height</code> and <code>width</code> arguments to either of the embedding functions:</p>
+<pre class="r"><code>div(
+  align = &quot;center&quot;, 
+  embed_youtube(id = &quot;1hKSYgOGtos&quot;, width = 640,  height = 390)
+)</code></pre>
+<div align="center">
+<iframe src="https://www.youtube.com/embed/1hKSYgOGtos" width="640" height="390" frameborder="0" allowfullscreen=""></iframe>
+</div>
+<p>YouTube and Vimeo each provide you the means to specify more options using http query parameters. A well-known example of this is YouTube allowing you to use a URL where the video starts at a given time (thanks to Aurélien Ginolhac for suggesting this link): <a href="https://youtu.be/8SGif63VW6E?t=4m12s" class="uri">https://youtu.be/8SGif63VW6E?t=4m12s</a></p>
+<p>Unfortunately, the query parameters for YouTube links are different from those for YouTube embeds. To do the same thing for embedding, you specify a <code>start</code> with the number of seconds.</p>
+<pre class="r"><code>div(
+  align = &quot;center&quot;, 
+  embed_youtube(id = &quot;8SGif63VW6E&quot;, query = list(start = 252))
+)</code></pre>
+<p>To make things a little easier, a helper function, <code>secs()</code> is provided:</p>
+<pre class="r"><code>div(
+  align = &quot;center&quot;, 
+  embed_youtube(id = &quot;8SGif63VW6E&quot;, query = list(start = secs(&quot;4m12s&quot;)))
+)</code></pre>
+<p><div align="center">
+<iframe src="https://www.youtube.com/embed/8SGif63VW6E?start=252" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+</div> It seems that Vimeo does not provide the option to specify a start time.</p>
+<p>The query parameters for each service can be found at:</p>
+<ul>
+<li><a href="https://developers.google.com/youtube/player_parameters">YouTube IFrame API</a></li>
+<li><a href="https://developer.vimeo.com/player/embedding">Vimeo emebedding</a></li>
+</ul>
+<div id="convenience-functions" class="section level3">
+<h3>Convenience functions</h3>
+<p>Finally, a couple of convenience functions are provided so that you can focus on experimenting with the arguments and the query parameters. In these functions, the video <code>id</code> is specified, any argument you provide is passed along to either <code>embed_youtube()</code> or <code>embed_vimeo()</code>.</p>
+<pre class="r"><code>rickroll_youtube()</code></pre>
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" width="420" height="315" frameborder="0" allowfullscreen=""></iframe>
+<pre class="r"><code>rickroll_vimeo()</code></pre>
+<iframe src="https://player.vimeo.com/video/45196609" width="500" height="281" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+</div>
 </div>
 
 
