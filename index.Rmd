@@ -5,12 +5,18 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
 ## Installation
 
-At some point, I hope to submit this to CRAN. In the meantime, you can install this package using Github.
+This package is available from CRAN:
+
+```{r}
+install.packages("vembedr")
+```
+
+If you like, you can install the development version using Github.
 
 ```{r eval=FALSE}
 if (packageVersion("devtools") < 1.6) {
@@ -25,7 +31,7 @@ library("vembedr")
 library("htmltools")
 ```
 
-The goal of the vembedr package is to make it a little bit easier for you to embed videos into your RMarkdown documents and your Shiny Apps. The package supports embedding from two services: YouTube and Vimeo.
+The goal of the vembedr package is to make it a little bit easier for you to embed videos into your R Markdown documents and your Shiny Apps. The package supports embedding from two services: YouTube and Vimeo.
 
 ### Note for RStudio users
 
@@ -33,7 +39,7 @@ The browser within the RStudio IDE does not support the use of iframes that poin
 
 ## Embedding a YouTube video
 
-Let's say that you want to embed a YouTube video into an RMarkdown document, perhaps a vignette. Your first step will be to get the YouTube identifier for the particular video. One way to do this is to inspect the URL of the YouTube page featuring the video that you want to embed. For example:
+Let's say that you want to embed a YouTube video into an R Markdown document, perhaps a vignette. Your first step will be to get the YouTube identifier for the particular video. One way to do this is to inspect the URL of the YouTube page featuring the video that you want to embed. For example:
 
 ```
 "https://www.youtube.com/watch?v=q2nNzNo_Xps"
