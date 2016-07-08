@@ -133,6 +133,7 @@ devtools::install_github(&quot;ijlyttle/vembedr&quot;)</code></pre>
 <pre class="r"><code>library(&quot;vembedr&quot;)
 library(&quot;htmltools&quot;)</code></pre>
 <p>The goal of the vembedr package is to make it a little bit easier for you to embed videos into your RMarkdown documents and your Shiny Apps. The package supports embedding from three services: YouTube, Vimeo, and now the useR2016 presentations (thanks Microsoft!).</p>
+<p><strong>Please note: the function to embed useR2016 videos is not yet in the CRAN version, only Github.</strong></p>
 <pre class="r"><code>embed_user2016(&quot;Literate-Programming&quot;)</code></pre>
 <iframe src="https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Literate-Programming/player" width="560" height="315" frameborder="0" allowfullscreen=""></iframe>
 <p>The trick for these useR videos is that the <code>id</code> is just the “title” part of the URL, for example:</p>
