@@ -33,10 +33,12 @@ library("htmltools")
 
 The goal of the vembedr package is to make it a little bit easier for you to embed videos into your RMarkdown documents and your Shiny Apps. The package supports embedding from three services: YouTube, Vimeo, and now the useR2016 presentations (thanks Microsoft!).
 
+### New: Embed useR2016 videos
+
 **Please note: the function to embed useR2016 videos is not yet in the CRAN version, only Github.**
 
 ```{r}
-embed_user2016("Literate-Programming")
+embed_user2016(id = "Literate-Programming")
 ```
 
 The trick for these useR videos is that the `id` is just the "title" part of the URL, for example:
