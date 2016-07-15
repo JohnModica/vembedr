@@ -1,7 +1,10 @@
 ---
 title: "vembedr"
 author: "Ian Lyttle"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -19,6 +22,13 @@ The goal of the vembedr package is to make it a little bit easier for you to emb
 
 * Embed useR! 2016 videos, and by extension, Microsoft Channel 9 videos.
 * A helper function, `use_start_time()` can be used consistently with YouTube, Vimeo, and Channel 9 embeds.
+
+For example (takes a few seconds to load):
+
+```{r}
+embed_user2016(id = "Day-3-Siepr-130-Ligtning-Talks-100-PM-140-PM") %>% 
+  use_start_time("21m45s")
+```
 
 ### Note for RStudio users
 
